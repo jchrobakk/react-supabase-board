@@ -18,12 +18,6 @@ export default function Login() {
     await supabase.auth.signInWithOtp({ email: data.email }).then(() => {
       toast.success('🎉 Email sent! Check your inbox', {
         position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: 'colored',
       });
     });
