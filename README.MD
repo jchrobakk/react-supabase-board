@@ -1,3 +1,7 @@
-# React + Supabase Board/Feed App
+React + Supabase Board/Feed App
 
-readme todo
+todo:
+
+- working app
+- readme
+- login with 3d party apps (github, facebook) (maybe)
