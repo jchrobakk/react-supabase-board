@@ -4,12 +4,14 @@ import { supabase } from '../supabaseClient';
 import { UserContext } from '../layouts/RootLayout';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 type FormValues = {
   username: string;
 };
 
 export default function Onboarding() {
+  const navigate = useNavigate();
   const user = useContext(UserContext);
   const {
     register,
@@ -29,15 +31,24 @@ export default function Onboarding() {
       .then(({ error }) => {
         if (error) {
           console.error(error);
+          if (error.message.includes('duplicate key value')) {
+            toast.error(`🤔 Username already taken.`, {
+              position: 'top-center',
+              theme: 'colored',
+            });
+            return;
+          }
           toast.error(`🤔 Something went wrong. Please, try again later.`, {
             position: 'top-center',
             theme: 'colored',
           });
+          return;
         }
         toast.success(`🎉 Username set! Let's begin your journey!`, {
           position: 'top-center',
           theme: 'colored',
         });
+        navigate('/');
       });
   }
   return (
