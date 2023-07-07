@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import { supabase } from '../supabaseClient';
 import { UserContext } from '../layouts/RootLayout';
 import { useContext } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 type FormValues = {
   username: string;
@@ -85,7 +85,6 @@ export default function Onboarding() {
         )}
         <Button className="mt-4">Start your journey!</Button>
       </form>
-      <ToastContainer />
     </div>
   );
 }

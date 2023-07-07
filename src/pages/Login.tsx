@@ -1,7 +1,7 @@
 import Button from '../components/Button';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 type FormValues = {
   email: string;
@@ -61,7 +61,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-      <ToastContainer />
     </div>
   );
 }
