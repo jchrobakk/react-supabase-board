@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Onboarding from './pages/Onboarding';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import AuthRoute from './components/AuthRoute';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'onboarding',
-        element: <Onboarding />,
+        element: (
+          <AuthRoute>
+            <Onboarding />
+          </AuthRoute>
+        ),
       },
       {
         path: '*',
