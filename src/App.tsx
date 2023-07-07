@@ -3,6 +3,7 @@ import RootLayout from './layouts/RootLayout';
 import Home from './pages/Home';
 import Onboarding from './pages/Onboarding';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '*',
         element: <NotFound />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
     ],
   },
