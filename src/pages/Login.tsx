@@ -16,10 +16,7 @@ export default function Login() {
 
   async function onSubmit(data: FormValues) {
     await supabase.auth.signInWithOtp({ email: data.email }).then(() => {
-      toast.success('🎉 Email sent! Check your inbox', {
-        position: 'top-center',
-        theme: 'colored',
-      });
+      toast.success('🎉 Email sent! Check your inbox');
     });
   }
 

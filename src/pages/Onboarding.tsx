@@ -32,22 +32,13 @@ export default function Onboarding() {
         if (error) {
           console.error(error);
           if (error.message.includes('duplicate key value')) {
-            toast.error(`🤔 Username already taken.`, {
-              position: 'top-center',
-              theme: 'colored',
-            });
+            toast.error(`🤔 Username already taken.`);
             return;
           }
-          toast.error(`🤔 Something went wrong. Please, try again later.`, {
-            position: 'top-center',
-            theme: 'colored',
-          });
+          toast.error(`🤔 Something went wrong. Please, try again later.`);
           return;
         }
-        toast.success(`🎉 Username set! Let's begin your journey!`, {
-          position: 'top-center',
-          theme: 'colored',
-        });
+        toast.success(`🎉 Username set! Let's begin your journey!`);
         navigate('/');
       });
   }

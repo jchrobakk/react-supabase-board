@@ -8,6 +8,9 @@ import { ToastContainer } from 'react-toastify';
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
-    <ToastContainer />
+    <ToastContainer
+      position="top-center"
+      theme="colored"
+    />
   </React.StrictMode>
 );
