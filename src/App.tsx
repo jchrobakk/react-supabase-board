@@ -1,18 +1,25 @@
-import { UserInfo, useSession } from './hooks/useSession';
-import { createContext } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './layouts/RootLayout';
+import Home from './pages/Home';
+import Welcome from './pages/Welcome';
 
-export const UserContext = createContext<UserInfo>({
-  session: null,
-  profile: null,
-});
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: 'welcome',
+        element: <Welcome />,
+      },
+    ],
+  },
+]);
 
 export default function App() {
-  const userInfo = useSession();
-  return (
-    <>
-      <UserContext.Provider value={userInfo}>
-        <div>App</div>
-      </UserContext.Provider>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
