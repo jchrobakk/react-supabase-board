@@ -1,6 +1,7 @@
 import Button from '../components/Button';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../supabaseClient';
+import { ToastContainer, toast } from 'react-toastify';
 
 type FormValues = {
   email: string;
@@ -14,10 +15,18 @@ export default function Login() {
   } = useForm<FormValues>();
 
   async function onSubmit(data: FormValues) {
-    console.log('submit');
-    console.log(data);
-    await supabase.auth.signInWithOtp({ email: data.email });
-    console.log('sent');
+    await supabase.auth.signInWithOtp({ email: data.email }).then(() => {
+      toast.success('🎉 Email sent! Check your inbox', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    });
   }
 
   return (
@@ -58,6 +67,7 @@ export default function Login() {
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }
