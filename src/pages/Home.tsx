@@ -4,6 +4,7 @@ import { supabase } from '../supabaseClient';
 import { toast } from 'react-toastify';
 import { UserContext } from '../layouts/RootLayout';
 import { Link } from 'react-router-dom';
+import Post from '../components/Post';
 
 interface Post {
   id: string;
@@ -64,7 +65,7 @@ export default function Home() {
         <div className="text-center">
           <h3 className="text-xl font-semibold">You are not logged in.</h3>
           <p>
-            If you want to post you have to{' '}
+            If you want to post you have to
             <Link
               to="/login"
               className="font-semibold hover:underline"
@@ -75,6 +76,14 @@ export default function Home() {
           </p>
         </div>
       )}
+      <div className="mt-10 flex flex-col gap-4">
+        {posts.map((post) => (
+          <Post
+            post={post}
+            key={post.id}
+          />
+        ))}
+      </div>
     </div>
   );
 }
